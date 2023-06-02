@@ -4,14 +4,7 @@ import Person from "./Person";
 
 const App = () => {
   const [people, setPeople] = useState(data);
-  if (people.length == 0) {
-    return (
-      <button className="btn btn-block" onClick={() => setPeople(data)}>
-        {" "}
-        Reset Items
-      </button>
-    );
-  }
+
   return (
     <main>
       <div className="container">
@@ -19,9 +12,16 @@ const App = () => {
         {people.map((person) => {
           return <Person key={person.id} {...person} />;
         })}
-        <button className="btn btn-block" onClick={() => setPeople([])}>
-          Clear All
-        </button>
+        {people.length == 0 ? (
+          <button className="btn btn-block" onClick={() => setPeople(data)}>
+            {" "}
+            Reset Items
+          </button>
+        ) : (
+          <button className="btn btn-block" onClick={() => setPeople([])}>
+            Clear All
+          </button>
+        )}
       </div>
     </main>
   );
