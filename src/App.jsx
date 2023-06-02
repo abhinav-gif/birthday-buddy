@@ -4,6 +4,14 @@ import Person from "./Person";
 
 const App = () => {
   const [people, setPeople] = useState(data);
+  if (people.length == 0) {
+    return (
+      <button className="btn btn-block" onClick={() => setPeople(data)}>
+        {" "}
+        Reset Items
+      </button>
+    );
+  }
   return (
     <main>
       <div className="container">
